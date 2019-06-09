@@ -165,6 +165,26 @@ void reverse_list(Node **head)
 	}
 	*head=prev;
 }
+/*
+ * Finding the meeting node of two linked lists given length m and n is the lengths of linked list
+ */
+Node *meetNodex(int m, int n, Node *ptrm, Node *ptrn) {
+	int i = 0;
+	if (m > n) {
+		for (i = 0; i < m - n; i++)
+			ptrm = ptrm->next;
+	}
+	if (n > m) {
+		for (i = 0; i < n - m; i++)
+			ptrn = ptrn->next;
+	}
+	while (ptrn != NULL && ptrm != NULL && ptrn != ptrm) {
+		ptrn = ptrn->next;
+		ptrm = ptrm->next;
+	}
+	return ptrn;
+}
+
 int main() {
 	Node *head = NULL;
 	addnode(2, &head);
